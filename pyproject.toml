@@ -1,0 +1,29 @@
+[project]
+name = "organizai"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "wintermelyn",email = "matas.seplveda@uc.cl"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi (>=0.115.12,<0.116.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "g4f (>=0.5.2.2,<0.6.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "google-genai (>=1.15.0,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "organizai", from = "src"}]
+
+[tool.poetry.scripts]
+organizai = "organizai.main:main"
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = "^0.34.2"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
