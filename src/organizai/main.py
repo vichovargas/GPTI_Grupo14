@@ -67,7 +67,6 @@ def main():
             try:
                 task = input_task()
                 tasks.append(task)
-                print(f'tareas -> {tasks}')
                 print("✓ Tarea añadida.")
             except Exception as e:
                 print(f"Error: {e}")
@@ -80,8 +79,6 @@ def main():
                 print(f"Error: {e}")
 
         elif choice == "3":
-            print(f'tareas -> {tasks}')
-            print(f'disponibilidad -> {availability}')
             if not tasks or not availability:
                 print("⚠ Debes ingresar al menos una tarea y disponibilidad.")
                 continue
