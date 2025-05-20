@@ -7,7 +7,7 @@ class TimeRange(BaseModel):
     end_time: time
 
 class DailyAvailability(BaseModel):
-    day: Literal['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    day: Literal['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     time_ranges: List[TimeRange]
 
 class Availability(BaseModel):
