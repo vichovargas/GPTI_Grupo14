@@ -11,7 +11,11 @@ class ScheduleRequest(BaseModel):
     tasks: List[Task]
     availability: Availability
 
-@router.post("/schedule/")
+@router.get("/")
+def read_root():
+    return {"message": "Welcome to the OrganizAI API."}
+
+@router.post("/schedule")
 def create_schedule(request: ScheduleRequest):
     try:
         result = generate_schedule(request.tasks, request.availability)

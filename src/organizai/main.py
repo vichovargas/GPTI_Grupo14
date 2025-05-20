@@ -55,7 +55,6 @@ def show_menu():
     print("3. Generar cronograma")
     print("4. Salir")
 
-
 def main():
     tasks = []
     availability = None
