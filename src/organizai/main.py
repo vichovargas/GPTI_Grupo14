@@ -13,7 +13,8 @@ def input_task() -> Task:
     end = parse_date(input("Fecha de fin (MM-DD o DD): "))
     hours = float(input("Horas estimadas de estudio: "))
     priority = int(input("Prioridad (1-10): "))
-    return Task(name=name, start_date=start, end_date=end, estimated_hours=hours, priority=priority)
+    actual_grade = float(input("Promeio actual en la asignatura: "))
+    return Task(name=name, start_date=start, end_date=end, estimated_hours=hours, priority=priority, actual_grade=actual_grade)
 
 
 def input_availability() -> Availability:

@@ -7,3 +7,4 @@ class Task(BaseModel):
     end_date: date
     estimated_hours: float = Field(..., gt=0)
     priority: int = Field(..., ge=1, le=10)
+    actual_grade: float = Field(None, ge=0, le=10)
