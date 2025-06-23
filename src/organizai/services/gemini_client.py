@@ -9,11 +9,9 @@ api_key = os.getenv("GOOGLE_API_KEY")
 if not api_key:
     raise EnvironmentError("GOOGLE_API_KEY no está definido en el entorno.")
 
-# Configurar el cliente Gemini
 client = genai.Client(api_key=api_key)
-
-# Modelo recomendado: rápido y económico
 MODEL_NAME = "gemini-2.0-flash"
+
 
 def call_gemini(prompt: str) -> str:
     """Envía un prompt a Gemini y devuelve el texto de respuesta."""
