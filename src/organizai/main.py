@@ -29,20 +29,24 @@ def input_availability() -> Availability:
 
         time_ranges = []
         while True:
-            start_input = input(f"  Inicio ({day}) [ej. 9, 13.5, 9:30] (vacío para terminar): ").strip()
+            start_input = input(
+                f"  Inicio ({day}) [ej. 9, 13.5, 9:30] (vacío para terminar): ").strip()
             if not start_input:
                 break
-            end_input = input(f"  Fin   ({day}) [ej. 11, 15.5, 11:30]: ").strip()
+            end_input = input(
+                f"  Fin   ({day}) [ej. 11, 15.5, 11:30]: ").strip()
 
             try:
                 start_time = parse_time(start_input)
                 end_time = parse_time(end_input)
-                time_ranges.append(TimeRange(start_time=start_time, end_time=end_time))
+                time_ranges.append(
+                    TimeRange(start_time=start_time, end_time=end_time))
             except ValueError as e:
                 print(f"  {e}")
 
         if time_ranges:
-            availability_by_day.append(DailyAvailability(day=day, time_ranges=time_ranges))
+            availability_by_day.append(DailyAvailability(
+                day=day, time_ranges=time_ranges))
 
     return Availability(days=availability_by_day)
 
