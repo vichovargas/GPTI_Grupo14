@@ -7,6 +7,7 @@ Crear un plan de estudio distribuido que:
 - Priorice tareas con fechas más cercanas o mayor prioridad.
 - Evite repetir la misma tarea más de dos veces por día.
 - Agrupe tareas similares si es útil, pero sin exceder la concentración.
+- Utilice la estrategia designada
 
 ### Datos de entrada:
 {input_data}

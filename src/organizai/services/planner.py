@@ -4,7 +4,7 @@ from organizai.services.gemini_client import call_gemini
 from organizai.utils.prompt_loader import load_prompt_template
 
 
-def generate_prompt(tasks: list[Task], availability: Availability) -> str:
+def generate_prompt(tasks: list[Task], availability: Availability, strategy: str) -> str:
     task_lines = [
         f'- Nombre: "{t.name}", ID: "{hash(t.name)}", Fecha inicio: {t.start_date}, Fecha fin: {t.end_date}, Duración estimada: {t.estimated_hours} horas, Prioridad: {t.priority}/10'
         for t in tasks
@@ -19,12 +19,13 @@ def generate_prompt(tasks: list[Task], availability: Availability) -> str:
 
     input_block = "**Tareas:**\n" + \
         "\n".join(task_lines) + "\n\n**Disponibilidad:**\n" + \
-        "\n".join(availability_lines)
+        "\n".join(availability_lines) + "\n\n**Estrategia:**\n" + \
+        "\n".join(strategy)
 
     template = load_prompt_template("scheduler_prompt")
     return template.replace("{input_data}", input_block)
 
 
-def generate_schedule(tasks: list[Task], availability: Availability) -> str:
-    prompt = generate_prompt(tasks, availability)
+def generate_schedule(tasks: list[Task], availability: Availability, strategy: str) -> str:
+    prompt = generate_prompt(tasks, availability, strategy)
     return call_gemini(prompt)

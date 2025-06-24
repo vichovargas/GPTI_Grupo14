@@ -30,6 +30,7 @@ class FrontendAvailabilityBlock(BaseModel):
 class ScheduleRequest(BaseModel):
     tasks: List[FrontendTask]
     availability: List[FrontendAvailabilityBlock]
+    strategy: str
 
 
 @router.post("/generate-schedule")
@@ -66,7 +67,9 @@ def create_schedule(request: ScheduleRequest):
             ]
         )
 
-        raw_result = generate_schedule(tasks, availability)
+        strategy = request.strategy.lower()
+
+        raw_result = generate_schedule(tasks, availability, strategy)
 
         match = re.search(
             r"```(?:json)?\s*(\{.*\})\s*```", raw_result, re.DOTALL)
