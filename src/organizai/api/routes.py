@@ -17,6 +17,7 @@ class FrontendTask(BaseModel):
     duration: int
     dueDate: datetime
     priority: Literal["alta", "media", "baja"]
+    actualGrade: float
     createdAt: datetime
 
 
@@ -30,7 +31,7 @@ class FrontendAvailabilityBlock(BaseModel):
 class ScheduleRequest(BaseModel):
     tasks: List[FrontendTask]
     availability: List[FrontendAvailabilityBlock]
-    strategy: str
+    strategy: Literal["Estructura simple", "pomodoro", "feynman", "mapas"]
 
 
 @router.post("/generate-schedule")
@@ -43,6 +44,7 @@ def create_schedule(request: ScheduleRequest):
                 end_date=t.dueDate.date(),
                 estimated_hours=t.duration / 60,
                 priority=t.priority,
+                actual_grade=t.actualGrade,
             )
             for t in request.tasks
         ]

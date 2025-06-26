@@ -6,7 +6,7 @@ from organizai.utils.prompt_loader import load_prompt_template
 
 def generate_prompt(tasks: list[Task], availability: Availability, strategy: str) -> str:
     task_lines = [
-        f'- Nombre: "{t.name}", ID: "{hash(t.name)}", Fecha inicio: {t.start_date}, Fecha fin: {t.end_date}, Duración estimada: {t.estimated_hours} horas, Prioridad: {t.priority}/10'
+        f'- Nombre: "{t.name}", Fecha inicio: {t.start_date}, Fecha fin: {t.end_date}, Duración estimada: {t.estimated_hours} horas, Prioridad: {t.priority}, Nota actual: {t.actual_grade}/7'
         for t in tasks
     ]
 
